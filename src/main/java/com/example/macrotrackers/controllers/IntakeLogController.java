@@ -24,6 +24,7 @@ public class IntakeLogController {
     @PostMapping("/{username}")
     public IntakeLog logIntake(@PathVariable String username, @RequestParam MealType mealType,
                                @RequestParam int calories, @RequestParam int carbs, @RequestParam int sugars) {
+        // TODO: Create comment for this method
         Optional<User> user = userService.findByUsername(username);
         return user.map(u -> intakeLogService.logIntake(u, mealType, calories, carbs, sugars))
                 .orElseThrow(() -> new RuntimeException("User not found"));
